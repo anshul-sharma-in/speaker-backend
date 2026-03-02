@@ -19,7 +19,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/speaker-backend
-            git pull origin main || git pull origin master
+            git fetch origin
+            git reset --hard origin/main
             source venv/bin/activate
             pip install -r requirements.txt
             sudo systemctl restart speaker-backend
